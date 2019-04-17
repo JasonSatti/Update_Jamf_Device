@@ -4,21 +4,21 @@ import os
 
 
 def create_and_configure():
-    """Create a api_creds file and capture the API information."""
+    """Create a jamf_info file and capture the API information."""
     user = input('Your API Username: ')
     password = input('Your API Password: ')
     name = input('Your JAMF Instance Name: ')
-    api_creds_template = F"""api_user='{user}'\npassword ='{password}'\n\
+    jamf_info_template = F"""api_user='{user}'\npassword ='{password}'\n\
 url='https://{name}.jamfcloud.com/JSSResource/computers/'\n"""
 
-    with os.fdopen(os.open('api_creds.py', os.O_WRONLY | os.O_CREAT, 0o600),
+    with os.fdopen(os.open('jamf_info.py', os.O_WRONLY | os.O_CREAT, 0o600),
                    'w') as F:
-        F.write(api_creds_template)
+        F.write(jamf_info_template)
     F.close()
 
 
 def main():
-    if not os.path.exists('./api_creds.py'):
+    if not os.path.exists('./jamf_info.py'):
         create_and_configure()
 
 
