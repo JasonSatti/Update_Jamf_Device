@@ -4,7 +4,7 @@ import argparse
 
 import requests
 
-import api_creds
+import jamf_info
 
 
 class JamfConnect(object):
@@ -65,10 +65,11 @@ def main():
                         help='Device status to append name with.')
     args = parser.parse_args()
 
-    jss_connect = JamfConnect(api_creds.resource_url, api_creds.api_user,
-                              api_creds.api_pw)
+    jss_connect = JamfConnect(jamf_info.resource_url, jamf_info.api_user,
+                              jamf_info.api_pw)
     jss_connect.update_jamf_device(args.last_name, args.status)
 
 
 if __name__ == '__main__':
     main()
+
