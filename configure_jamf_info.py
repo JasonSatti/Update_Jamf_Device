@@ -8,8 +8,8 @@ def create_and_configure():
     user = input('Your API Username: ')
     password = input('Your API Password: ')
     name = input('Your JAMF Instance Name: ')
-    jamf_info_template = F"""api_user='{user}'\npassword ='{password}'\n\
-url='https://{name}.jamfcloud.com/JSSResource/computers/'\n"""
+    jamf_info_template = F"""api_user='{user}'\napi_pw ='{password}'\n\
+resource_url='https://{name}.jamfcloud.com/JSSResource/computers/'\n"""
 
     with os.fdopen(os.open('jamf_info.py', os.O_WRONLY | os.O_CREAT, 0o600),
                    'w') as F:
